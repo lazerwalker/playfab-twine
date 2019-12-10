@@ -1,0 +1,19 @@
+{
+  "name": "playfab-twine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Em Lazer-Walker <me@lazerwalker.com>",
+  "license": "MIT",
+  "dependencies": {
+    "playfab-sdk": "^2.39.191121",
+    "playfab-web-sdk": "^1.57.191121"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.31",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.7.3"
+  },
+  "scripts": {
+    "build": "parcel index.ts"
+  }
+}
