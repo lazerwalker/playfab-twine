@@ -6,20 +6,14 @@ interface HarloweState {
   passage: string;
 }
 
+interface Window {
+  setupPlayfab: (trackedVars: string[]) => void;
+}
+
 const State: HarloweState = (window as any).State;
 
-// TODO: Abstract this
-let trackedVariables = [
-  "numKeys",
-  "copperKey",
-  "silverKey",
-  "goldenKey",
-  "redKey",
-  "blueKey",
-  "greenKey",
-  "emeraldKey",
-  "roseKey"
-];
+let trackedVariables: string[] = [];
+let playfabInitialized = false;
 
 const createGUID = (): string => {
   //http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
@@ -51,6 +45,12 @@ function getGUID() {
   }
 }
 
+window.setupPlayfab = function(trackedVars: string[]) {
+  trackedVariables = trackedVars;
+  logInWithPlayFab();
+  // TODO: Abstract this
+};
+
 function logInWithPlayFab() {
   var guid = getGUID();
   PlayFab.settings.titleId = "2F970";
@@ -66,14 +66,15 @@ function logInWithPlayFab() {
         console.log("Login error", error);
       } else {
         console.log(response.data);
+        playfabInitialized = true;
       }
     }
   );
 }
 
-logInWithPlayFab();
-
 State.on("forward", e => {
+  if (!playfabInitialized) return;
+
   PlayFabClientSDK.WritePlayerEvent({
     EventName: "node_loaded",
     Body: { text: e, state: trackedValues() },
@@ -83,6 +84,8 @@ State.on("forward", e => {
 });
 
 $(document).on("click", "tw-link", e => {
+  if (!playfabInitialized) return;
+
   console.log("Tracking link click event: '" + e.target.innerText + "'");
   PlayFabClientSDK.WritePlayerEvent({
     EventName: "link_clicked",
@@ -98,6 +101,8 @@ $(document).on("click", "tw-link", e => {
 });
 
 window.addEventListener("beforeunload", function(e) {
+  if (!playfabInitialized) return;
+
   console.log("Tracking browser close with node " + State.passage);
   PlayFabClientSDK.WritePlayerEvent({
     EventName: "game_closed",
