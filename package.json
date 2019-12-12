@@ -10,10 +10,12 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.3.31",
+    "gh-pages": "^2.1.1",
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.7.3"
   },
   "scripts": {
-    "build": "parcel index.ts"
+    "build": "parcel index.ts",
+    "deploy": "gh-pages -d dist"
   }
 }

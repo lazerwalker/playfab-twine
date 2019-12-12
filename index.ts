@@ -1,4 +1,4 @@
-import { PlayFabClientSDK, PlayFab } from "playfab-sdk";
+import { PlayFabClient, PlayFab } from "playfab-sdk";
 
 interface HarloweState {
   variables: { [key: string]: any };
@@ -46,13 +46,13 @@ window.setupPlayfab = (trackedVariables: string[]) => {
   var guid = getGUID();
   PlayFab.settings.titleId = "2F970";
 
-  PlayFabClientSDK.LoginWithCustomID(
+  PlayFabClient.LoginWithCustomID(
     {
       TitleId: PlayFab.settings.titleId,
       CustomId: guid,
       CreateAccount: true
     },
-    (response, error) => {
+    (error, response) => {
       if (error) {
         console.log("Login error", error);
       } else {
@@ -65,7 +65,7 @@ window.setupPlayfab = (trackedVariables: string[]) => {
 
 const setUpStateHandlers = (trackedVariables: string[]) => {
   State.on("forward", e => {
-    PlayFabClientSDK.WritePlayerEvent({
+    PlayFabClient.WritePlayerEvent({
       EventName: "node_loaded",
       Body: { text: e, state: trackedValues(trackedVariables) },
       Timestamp: new Date()
@@ -77,7 +77,7 @@ const setUpStateHandlers = (trackedVariables: string[]) => {
   // we can assume jQuery will already exist in the execution environment
   $(document).on("click", "tw-link", e => {
     console.log("Tracking link click event: '" + e.target.innerText + "'");
-    PlayFabClientSDK.WritePlayerEvent({
+    PlayFabClient.WritePlayerEvent({
       EventName: "link_clicked",
       Body: {
         text: e.target.innerText,
@@ -86,7 +86,7 @@ const setUpStateHandlers = (trackedVariables: string[]) => {
       Timestamp: new Date()
     });
 
-    PlayFabClientSDK.WritePlayerEvent({
+    PlayFabClient.WritePlayerEvent({
       EventName: "link_clicked_" + e.target.innerText.replace(/\W/gi, "_"),
       Body: {
         text: e.target.innerText,
@@ -98,7 +98,7 @@ const setUpStateHandlers = (trackedVariables: string[]) => {
 
   window.addEventListener("beforeunload", function(e) {
     console.log("Tracking browser close with node " + State.passage);
-    PlayFabClientSDK.WritePlayerEvent({
+    PlayFabClient.WritePlayerEvent({
       EventName: "game_closed",
       Body: { text: State.passage, state: trackedValues(trackedVariables) },
       Timestamp: new Date()
