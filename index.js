@@ -13017,7 +13017,7 @@ var getGUID = function getGUID() {
 window.setupPlayfab = function (trackedVariables) {
   var guid = getGUID();
   playfab_sdk_1.PlayFab.settings.titleId = "2F970";
-  playfab_sdk_1.PlayFabClientSDK.LoginWithCustomID({
+  playfab_sdk_1.PlayFabClient.LoginWithCustomID({
     TitleId: playfab_sdk_1.PlayFab.settings.titleId,
     CustomId: guid,
     CreateAccount: true
@@ -13033,7 +13033,7 @@ window.setupPlayfab = function (trackedVariables) {
 
 var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
   State.on("forward", function (e) {
-    playfab_sdk_1.PlayFabClientSDK.WritePlayerEvent({
+    PlayFabClientSDK.WritePlayerEvent({
       EventName: "node_loaded",
       Body: {
         text: e,
@@ -13047,7 +13047,7 @@ var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
 
   $(document).on("click", "tw-link", function (e) {
     console.log("Tracking link click event: '" + e.target.innerText + "'");
-    playfab_sdk_1.PlayFabClientSDK.WritePlayerEvent({
+    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
       EventName: "link_clicked",
       Body: {
         text: e.target.innerText,
@@ -13055,7 +13055,7 @@ var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
       },
       Timestamp: new Date()
     });
-    playfab_sdk_1.PlayFabClientSDK.WritePlayerEvent({
+    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
       EventName: "link_clicked_" + e.target.innerText.replace(/\W/gi, "_"),
       Body: {
         text: e.target.innerText,
@@ -13066,7 +13066,7 @@ var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
   });
   window.addEventListener("beforeunload", function (e) {
     console.log("Tracking browser close with node " + State.passage);
-    playfab_sdk_1.PlayFabClientSDK.WritePlayerEvent({
+    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
       EventName: "game_closed",
       Body: {
         text: State.passage,
@@ -13104,7 +13104,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58003" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50376" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
