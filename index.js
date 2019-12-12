@@ -13033,7 +13033,7 @@ window.setupPlayfab = function (trackedVariables) {
 
 var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
   State.on("forward", function (e) {
-    PlayFabClientSDK.WritePlayerEvent({
+    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
       EventName: "node_loaded",
       Body: {
         text: e,
@@ -13104,7 +13104,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50376" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50441" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
