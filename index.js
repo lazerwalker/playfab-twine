@@ -13021,7 +13021,7 @@ window.setupPlayfab = function (trackedVariables) {
     TitleId: playfab_sdk_1.PlayFab.settings.titleId,
     CustomId: guid,
     CreateAccount: true
-  }, function (response, error) {
+  }, function (error, response) {
     if (error) {
       console.log("Login error", error);
     } else {
