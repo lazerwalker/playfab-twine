@@ -13004,7 +13004,7 @@ var getGUID = function getGUID() {
   }
 };
 
-window.setupPlayfab = function (trackedVariables, State) {
+window.setupPlayfab = function (playfabID, trackedVariables, State) {
   var trackedValues = function trackedValues(trackedVariables) {
     var map = {};
     trackedVariables.forEach(function (v) {
@@ -13014,7 +13014,7 @@ window.setupPlayfab = function (trackedVariables, State) {
   };
 
   var guid = getGUID();
-  playfab_sdk_1.PlayFab.settings.titleId = "2F970";
+  playfab_sdk_1.PlayFab.settings.titleId = playfabID;
   playfab_sdk_1.PlayFabClient.LoginWithCustomID({
     TitleId: playfab_sdk_1.PlayFab.settings.titleId,
     CustomId: guid,
@@ -13102,7 +13102,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54900" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55377" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
