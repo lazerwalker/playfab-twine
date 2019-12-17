@@ -4,19 +4,20 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js 12.0
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.0
-    - name: build and deploy library
-      run: |
-        npm ci
-        npm run build --if-present
-        npm run deploy
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12.0
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.0
+      - name: build library
+        run: |
+          npm ci
+          npm run build --if-present
+        env:
+          CI: true
+      - name: GitHub Pages Deploy
+        uses: maxheld83/ghpages@v0.2.1
+        with:
+          BUILD_DIR: "dist/"
