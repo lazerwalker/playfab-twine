@@ -12980,16 +12980,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var playfab_sdk_1 = require("playfab-sdk");
 
-var State = window.State;
-
-var trackedValues = function trackedValues(trackedVariables) {
-  var map = {};
-  trackedVariables.forEach(function (v) {
-    map[v] = State.variables[v];
-  });
-  return map;
-};
-
 var createGUID = function createGUID() {
   //http://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
   // via http://s3-us-west-2.amazonaws.com/api-playfab-com-craft-files/FileAssets/index.html
@@ -13014,7 +13004,15 @@ var getGUID = function getGUID() {
   }
 };
 
-window.setupPlayfab = function (trackedVariables) {
+window.setupPlayfab = function (trackedVariables, State) {
+  var trackedValues = function trackedValues(trackedVariables) {
+    var map = {};
+    trackedVariables.forEach(function (v) {
+      map[v] = State.variables[v];
+    });
+    return map;
+  };
+
   var guid = getGUID();
   playfab_sdk_1.PlayFab.settings.titleId = "2F970";
   playfab_sdk_1.PlayFabClient.LoginWithCustomID({
@@ -13029,52 +13027,52 @@ window.setupPlayfab = function (trackedVariables) {
       setUpStateHandlers(trackedVariables);
     }
   });
-};
 
-var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
-  State.on("forward", function (e) {
-    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
-      EventName: "node_loaded",
-      Body: {
-        text: e,
-        state: trackedValues(trackedVariables)
-      },
-      Timestamp: new Date()
-    });
-    console.log("History event!", e);
-  }); // Because we're using this in context of Twine 2 + Harlowe,
-  // we can assume jQuery will already exist in the execution environment
+  var setUpStateHandlers = function setUpStateHandlers(trackedVariables) {
+    State.on("forward", function (e) {
+      playfab_sdk_1.PlayFabClient.WritePlayerEvent({
+        EventName: "node_loaded",
+        Body: {
+          text: e,
+          state: trackedValues(trackedVariables)
+        },
+        Timestamp: new Date()
+      });
+      console.log("History event!", e);
+    }); // Because we're using this in context of Twine 2 + Harlowe,
+    // we can assume jQuery will already exist in the execution environment
 
-  $(document).on("click", "tw-link", function (e) {
-    console.log("Tracking link click event: '" + e.target.innerText + "'");
-    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
-      EventName: "link_clicked",
-      Body: {
-        text: e.target.innerText,
-        state: trackedValues(trackedVariables)
-      },
-      Timestamp: new Date()
+    $(document).on("click", "tw-link", function (e) {
+      console.log("Tracking link click event: '" + e.target.innerText + "'");
+      playfab_sdk_1.PlayFabClient.WritePlayerEvent({
+        EventName: "link_clicked",
+        Body: {
+          text: e.target.innerText,
+          state: trackedValues(trackedVariables)
+        },
+        Timestamp: new Date()
+      });
+      playfab_sdk_1.PlayFabClient.WritePlayerEvent({
+        EventName: "link_clicked_" + e.target.innerText.replace(/\W/gi, "_"),
+        Body: {
+          text: e.target.innerText,
+          state: trackedValues(trackedVariables)
+        },
+        Timestamp: new Date()
+      });
     });
-    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
-      EventName: "link_clicked_" + e.target.innerText.replace(/\W/gi, "_"),
-      Body: {
-        text: e.target.innerText,
-        state: trackedValues(trackedVariables)
-      },
-      Timestamp: new Date()
+    window.addEventListener("beforeunload", function (e) {
+      console.log("Tracking browser close with node " + State.passage);
+      playfab_sdk_1.PlayFabClient.WritePlayerEvent({
+        EventName: "game_closed",
+        Body: {
+          text: State.passage,
+          state: trackedValues(trackedVariables)
+        },
+        Timestamp: new Date()
+      });
     });
-  });
-  window.addEventListener("beforeunload", function (e) {
-    console.log("Tracking browser close with node " + State.passage);
-    playfab_sdk_1.PlayFabClient.WritePlayerEvent({
-      EventName: "game_closed",
-      Body: {
-        text: State.passage,
-        state: trackedValues(trackedVariables)
-      },
-      Timestamp: new Date()
-    });
-  });
+  };
 };
 },{"playfab-sdk":"node_modules/playfab-sdk/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -13104,7 +13102,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50992" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54900" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
