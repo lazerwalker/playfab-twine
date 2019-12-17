@@ -15,7 +15,7 @@
     "typescript": "^3.7.3"
   },
   "scripts": {
-    "build": "parcel index.ts",
-    "deploy": "gh-pages -d dist"
+    "build": "parcel build index.ts",
+    "deploy": "npm build && gh-pages -d dist"
   }
 }
