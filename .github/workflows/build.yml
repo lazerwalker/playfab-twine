@@ -20,7 +20,9 @@ jobs:
           npm run build --if-present
         env:
           CI: true
-      - name: GitHub Pages Deploy
-        uses: maxheld83/ghpages@v0.2.1
-        with:
-          BUILD_DIR: "dist/"
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GH_PAT }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./dist
