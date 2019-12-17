@@ -16,6 +16,6 @@
   },
   "scripts": {
     "build": "parcel build index.ts",
-    "deploy": "npm build && gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   }
 }
