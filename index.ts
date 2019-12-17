@@ -7,7 +7,11 @@ interface HarloweState {
 }
 
 interface Window {
-  setupPlayfab: (trackedVars: string[], State: HarloweState) => void;
+  setupPlayfab: (
+    playfabID: string,
+    trackedVars: string[],
+    State: HarloweState
+  ) => void;
 }
 
 const createGUID = (): string => {
@@ -32,7 +36,11 @@ const getGUID = () => {
   }
 };
 
-window.setupPlayfab = (trackedVariables: string[], State: HarloweState) => {
+window.setupPlayfab = (
+  playfabID: string,
+  trackedVariables: string[],
+  State: HarloweState
+) => {
   const trackedValues = (trackedVariables: string[]) => {
     let map = {};
     trackedVariables.forEach(function(v) {
@@ -42,7 +50,7 @@ window.setupPlayfab = (trackedVariables: string[], State: HarloweState) => {
   };
 
   var guid = getGUID();
-  PlayFab.settings.titleId = "2F970";
+  PlayFab.settings.titleId = playfabID;
 
   PlayFabClient.LoginWithCustomID(
     {
