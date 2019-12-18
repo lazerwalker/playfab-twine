@@ -1,0 +1,44 @@
+::StoryData
+{
+	"ifid": "F2277A49-95C9-4B14-AE66-62526089F861",
+    "format": "Harlowe",
+    "format-version": "3.1.0",
+    "start": "Start"
+}
+
+::StoryTitle 
+Playfab-Twine
+ 
+::StoryJS [script]
+var url = "https://lazerwalker.com/playfab-twine/index.js";
+$(function () {
+    $.getScript(url,
+        (data, textStatus, jqxhr) => {
+					const trackedVariables = []
+					setupPlayfab("A24FC", trackedVariables, State)
+        }
+    )
+})
+
+::Start 
+<h1>PlayFab-Twine</h1>
+
+PlayFab-Twine is a library that makes it easy to integrate <a href="https://https://playfab.com">Azure PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience!
+
+[[What is Twine?]]
+[[What is PlayFab?]]
+
+[[What is PlayFab-Twine?]]
+[[How do I set it up?]]
+
+Since this site is made in Twine, it's using PlayFab-Twine! You can see a [[live example]] of the user-facing Telltale-style choice visualizations.
+
+::What is Twine?
+
+::What is PlayFab?
+
+::What is PlayFab-Twine?
+
+::How do I set it up?
+
+::live example
