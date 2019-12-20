@@ -72,7 +72,13 @@ window.setupPlayfab = (
     State.on("forward", e => {
       PlayFabClient.WritePlayerEvent({
         EventName: "node_loaded",
-        Body: { text: e, state: trackedValues(trackedVariables) },
+        Body: { Node: e, State: trackedValues(trackedVariables) },
+        Timestamp: new Date()
+      });
+
+      PlayFabClient.WritePlayerEvent({
+        EventName: "node_loaded_" + e.replace(/\W/gi, "_"),
+        Body: { Node: e, State: trackedValues(trackedVariables) },
         Timestamp: new Date()
       });
       console.log("History event!", e);
@@ -85,8 +91,8 @@ window.setupPlayfab = (
       PlayFabClient.WritePlayerEvent({
         EventName: "link_clicked",
         Body: {
-          text: e.target.innerText,
-          state: trackedValues(trackedVariables)
+          Text: e.target.innerText,
+          State: trackedValues(trackedVariables)
         },
         Timestamp: new Date()
       });
@@ -94,8 +100,8 @@ window.setupPlayfab = (
       PlayFabClient.WritePlayerEvent({
         EventName: "link_clicked_" + e.target.innerText.replace(/\W/gi, "_"),
         Body: {
-          text: e.target.innerText,
-          state: trackedValues(trackedVariables)
+          Text: e.target.innerText,
+          State: trackedValues(trackedVariables)
         },
         Timestamp: new Date()
       });
@@ -105,7 +111,7 @@ window.setupPlayfab = (
       console.log("Tracking browser close with node " + State.passage);
       PlayFabClient.WritePlayerEvent({
         EventName: "game_closed",
-        Body: { text: State.passage, state: trackedValues(trackedVariables) },
+        Body: { Node: State.passage, State: trackedValues(trackedVariables) },
         Timestamp: new Date()
       });
     });
