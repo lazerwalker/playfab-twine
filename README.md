@@ -53,23 +53,21 @@ If you already have that, you can jump straight to [[adding the library to your 
 
 4. Paste in the following code, adding in the appropriate Title ID and variable names.
 
-```
+```js
 var url = "https://lazerwalker.com/playfab-twine/index.js";
 
 // Your PlayFab Title ID, found in Step 2
-var playfabID = "A1B2C3"
+var playfabID = "A1B2C3";
 
 // An array of every Twine variable you want to track (don't include the dollar sign)
-var trackedVariables = ["score", "hunger", "hasPetDog"]
+var trackedVariables = ["score", "hunger", "hasPetDog"];
 
-$(function () {
-    $.getScript(url,
-        (data, textStatus, jqxhr) => {
-					const trackedVariables = []
-					setupPlayfab(playfabID, trackedVariables, State)
-        }
-    )
-})
+$(function() {
+  $.getScript(url, (data, textStatus, jqxhr) => {
+    const trackedVariables = [];
+    setupPlayfab(playfabID, trackedVariables, State);
+  });
+});
 ```
 
 ...and that's it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.
