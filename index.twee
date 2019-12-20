@@ -26,19 +26,75 @@ $(function () {
 PlayFab-Twine is a library that makes it easy to integrate <a href="https://https://playfab.com">Azure PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience!
 
 [[What is Twine?]]
+
 [[What is PlayFab?]]
 
 [[What is PlayFab-Twine?]]
+
+
 [[How do I set it up?]]
 
 Since this site is made in Twine, it's using PlayFab-Twine! You can see a [[live example]] of the user-facing Telltale-style choice visualizations.
 
 ::What is Twine?
+<a href="https://twinery.org">Twine</a> is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don't know how to program. This website was made in Twine!
 
 ::What is PlayFab?
+<a href="https://playfab.com">PlayFab</a> is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
+
+If you're making a Twine game, most of this isn't relevant to you! However, it does include a very good analytics service. Because it's meant for games, it's a better fit fo Twine games than many other non-game analytics tools. 
+
+Its free tier is also very generous. If you're just using it to add analytics to your Twine game, it won't cost you anything.
 
 ::What is PlayFab-Twine?
 
+PlayFab-Twine is a piece of software that makes it easy for you to add analytics to your Twine game without writing any custom code!
+
+With only a few lines of copy/pasted code, and a tiny bit of configuration, it will automatically gather user behavior for you to look at later. It will:
+
+* Track which nodes players visit, and in what order
+* Track any number of Twine variables
+* Give you the ability to easily show players choice graphs:
+
+No identifying data is stored about your players, and their data will not be sold or used in any way.
+
 ::How do I set it up?
+
+Getting started with PlayFab-Twine is easy!
+
+You'll need to [[sign up for a free PlayFab account and get your Title ID|Sign up for PlayFab]].
+
+If you already have that, you can jump straight to [[adding the library to your Twine game]].
+
+::Sign up for PlayFab
+1. Sign up for a PlayFab account.
+
+2. Find your PlayFab Title ID.
+
+3. In the Twine editor, edit your game's JavaScript.
+
+4. Paste in the following code:
+```
+var url = "https://lazerwalker.com/playfab-twine/index.js";
+
+// Your PlayFab Title ID, found in Step 2
+var playfabID = "A1B2C3"
+
+// An array of every Twine variable you want to track (don't include the dollar sign)
+var trackedVariables = ["score", "hunger", "hasPetDog"]
+
+$(function () {
+    $.getScript(url,
+        (data, textStatus, jqxhr) => {
+            const trackedVariables = []
+            setupPlayfab(playfabID, trackedVariables, State)
+        }
+    )
+})
+```
+
+...and that's it! As soon as your game is live on the web, you can log in at https://playfab.com and see real-time data flowing in.
+
+TODO: Displaying choice data
 
 ::live example
