@@ -128,6 +128,6 @@ $(function() {
 });
 </pre>
 
-...and that's it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.
+...and that's it! As soon as your game is live on the web, you can log in at <a target="_blank" href="https://playfab.com?WT.mc_id=github-playfabtwine-emwalker">https://playfab.com</a> and see real-time data flowing in.
 
 ::live example
