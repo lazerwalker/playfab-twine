@@ -63,7 +63,7 @@ var playfabID = "A1B2C3";
 var trackedVariables = ["score", "hunger", "hasPetDog"];
 
 $(function() {
-  $.getScript(url, (data, textStatus, jqxhr) => {
+  $.getScript(url, function(data, textStatus, jqxhr) {
     const trackedVariables = [];
     setupPlayfab(playfabID, trackedVariables, State);
   });
