@@ -28,7 +28,6 @@ With only a few lines of copy/pasted code, and a tiny bit of configuration, it w
 
 - Track which passages players visit, and in what order
 - Track any number of Twine variables
-- Give you the ability to easily show players choice graphs:
 
 No identifying data is stored about your players, and their data will not be sold or used in any way.
 
@@ -132,11 +131,13 @@ This will let you view a graph comparing relative popularities of those events o
 
 ![example graph](images/graph.png)
 
-(Nerdy explanation: Why do we need to use the ugly long event names instead of the more concise ones? The PlayFab analytics dashboard currently doesn't allow you to easily run reports that segregate data with the same event name based on custom event properties. In other words, you can say "give me every `passage_loaded` query where the passage name is one of these five passages", but the graph you see will group them all together instead of letting you break out data by passage.)
+(**Technical explanation**: Why do we need to use the ugly long event names instead of the more concise ones? The PlayFab analytics dashboard currently doesn't allow you to easily run reports that segregate data with the same event name based on custom event properties. In other words, you can say "give me every `passage_loaded` query where the passage name is one of these five passages", but the graph you see will group them all together instead of letting you break out data by passage.)
 
-## How to Access Data Within Twine
+## Future Roadmap
 
-This is not yet currently public, but I'm actively working on an API to access gamewide analytics data from within Twine. My intent is to provide an easy system for you to drop in a Telltale-style visualization of what percentage of players made similar choices to the active player. Stay tuned for more!
+Although tracked variables are currently being stored in PlayFab, and can be viewed in individual passage/link events, there's no way to visualize them en masse.I'm working on exploring the best way to do that with PlayFab's free tier, as a lot of the more complex analytics functionality is gated behind having a paid subscription.
+
+I'm also trying to come up with a friendly way to expose analytics data to Twine games themselves. My hope is to find a way to let Twine designers easily drop in Telltale-style "X% of players made the same choice as you" graphs, but it's not yet clear to me if there's an easy way to do that without requiring gamemakers to write a lot of server code.
 
 ## Privacy
 
