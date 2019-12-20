@@ -2,7 +2,7 @@
 
 ![](https://github.com/lazerwalker/playfab-twine/workflows/Build/badge.svg)
 
-PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://https://playfab.com) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
+PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
 
 **WARNING: This repo is under construction. Watch this space!**
 
@@ -14,7 +14,7 @@ You can (will be able to) find an interactive version of this README, written in
 
 ## What is PlayFab?
 
-[PlayFab](https://playfab.com) is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards.
+[PlayFab](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards.
 
 If you're making a Twine game, most of this isn't relevant to you! However, it does include a very good analytics service. Because it's meant for games, it's a better fit fo Twine games than many other non-game analytics tools.
 
@@ -46,8 +46,8 @@ If you already have that, you can jump straight to [[adding the library to your 
 
 2. Find your PlayFab Title ID. You can find it by clicking the gear in the top-left corner, selecting "Title Settings", and going to the "API Features" tab. It should look something like "A1B2C3".
 
-![](images/title-settings.png)
-![](images/title-id.png)
+![screenshot of the PlayFab Settings drop-down menu](images/title-settings.png)
+![screenshot of the API Features tab](images/title-id.png)
 
 3. In the Twine editor, edit your game's JavaScript code by opening the menu and selecting "Edit Story JavaScript".
 
@@ -82,24 +82,19 @@ PlayFab-Twine exposes data in a few different ways:
 
 ### Tracking Link Clicks / Visited Passages
 
-Every time a player clicks a link, two events are tracked. One is called `link_clicked`, and one is called `link_clicked_{link text}`, where the `link text` is the full printed text that was displayed in the link, but with spaces replaced by underscores. Both have a JSON payload for their body:
+PlayFab-Twine sends analytics events in two instances: when the player clicks a link, and when the game engine loads a new passage.
 
-```
-{
-    text: "", // The printed text of the link
-    state: {} // An object containing key/value pairs of the current state of every tracked variable
-}
-```
+Because Twine lets you have links that do not directly lead to new passages (e.g. reveal links, cycle links), that distinction is important.
 
-The `state` object contains the current values for every variable key given in the `trackedVariables` argument passed into PlayFab-Twine when you initialize it.
+When a new passage is loaded, an event titled `passage_loaded` is fired off. It contains two properties: the internal name of the new passage, and an object containing the current values of every variable you've said you want to track when you initialize PlayFab-Twine.
 
-Additionally, every time Harlowe loads a new passage, an event is fired with the name `passage_loaded`, with a payload similar to the previous events. The "text" property contains the internal name of the passage, rather than the displayed text on the clicked link.
+Similarly, whenever a link is clicked, a `link_clicked` event is fired, with `Text` and `State` values. `State` is the same as `passage_loaded`, whereas `Text` contains the displayed text on the link that was clicked.
 
-**WARNING**: This duplication isn't great! Cleaning this up will hopefully happen before this library is publicized.
+**Technical note (feel free to ignore this if you're confused):** Current limitations of the PlayFab Analytics dashboard mean that PlayFab-Twine currently also sends a whole second set of events for each link click / passage load. If the player clicks a link titled "click me", a `link_clicked` event will be registered, but so will another one with the name `link_clicked_click_me`. It will have the same `Text` and `State` properties as the first one. Similarly, if a passage called "My Passage" is loaded, there will be both a normal `passage_loaded` event as well as one with the name `passage_loaded_my_passage`. More information on why this is, and how to use this, is available in the "How to Read Data on PlayFab" section below.
 
 ### Tracking Game Close
 
-When the player closes the browser window on a game using PlayFab-Twine, it attempts to fire off an analytics event called `game_closed`. Its body is the same as other events: `state` contains the current value of all tracked variables, and `text` contains the internal name of the passage the user was on when they exited.
+When the player closes the browser window on a game using PlayFab-Twine, it attempts to fire off an analytics event called `game_closed`. Its body is the same as other events: `State` contains the current value of all tracked variables, and `Text` contains the internal name of the passage the user was on when they exited.
 
 ### User Persistence
 
@@ -109,7 +104,31 @@ PlayFab-Twine generates a random unique identifier for each player, stores it in
 
 All of the base-level dashboard data PlayFab gives you (about daily active users, etc) should be accurate. TODO: Talk about exactly what that is.
 
-TODO: Write about how to run analytics reports.
+### Core Game Health
+
+On the front page of your PlayFab dashboard, you'll get live information about things like the number of daily active and monthly users.
+
+![Screenshot of the PlayFab overview dashboard](images/dau.png)
+
+You'll also get a version of this report emailed to you every day.
+
+Additionally, the "PlayStream Monitor" tab will show you a real-time feed of your players interacting with your game!
+
+### Analytics Reports
+
+If you click the "Data" link in the "Analyze" subsection of the PlayFab dashboard, you can reach the Analytics dashboard, where you can run custom queries.
+
+The [PlayFab documentation](https://docs.microsoft.com/en-ca/gaming/playfab/features/analytics/metrics/real-time-analytics-event-queries?WT.mc_id=github-playfabtwine-emwalker) has a great overview of the query language you can use to write your own custom queries.
+
+Specifically, if you want to pull up specific events, you want to use the `EventData.EventName` field, and use the event names that include the passage or link text in them (see the technical note above).
+
+As an example, this query will show every time a player either clicked a link titled "Go inside", or loaded a passage called "front porch":
+
+`EventData.EventName == 'link_clicked_Go_inside' or EventData.EventName == 'link_clicked_front_porch'`
+
+Note that these titles are case-sensitive.
+
+(Nerdy explanation: Why do we need to use the ugly long event names instead of the more concise ones? The PlayFab analytics dashboard currently doesn't allow you to easily run reports that segregate data with the same event name based on custom event properties. In other words, you can say "give me every `passage_loaded` query where the passage name is one of these five passages", but the graph you see will group them all together instead of letting you break out data by passage.)
 
 ## How to Access Data Within Twine
 
