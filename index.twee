@@ -42,7 +42,7 @@ $(function () {
 ::Start 
 <h1>PlayFab-Twine</h1>
 
-PlayFab-Twine makes it easy to integrate <a href="https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker">PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. 
+PlayFab-Twine makes it easy to integrate <a target="_blank" href="https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker">PlayFab</a> analytics into your <a target="_blank" href="https://twinery.org">Twine</a> games. 
 
 With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! 
 
@@ -57,14 +57,14 @@ Got a handle on all that? [[Let's get started!|How do I set it up?]]
 
 Since this site is made in Twine, it's using PlayFab-Twine!
 
-If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: <a href="https://github.com/lazerwalker/playfab-twine">https://github.com/lazerwalker/playfab-twine</a>.
+If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: <a target="_blank" href="https://github.com/lazerwalker/playfab-twine">https://github.com/lazerwalker/playfab-twine</a>.
 
 
 ::What is Twine?
-<a href="https://twinery.org">Twine</a> is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don't know how to program. This website was made in Twine!
+<a target="_blank" href="https://twinery.org">Twine</a> is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don't know how to program. This website was made in Twine!
 
 ::What is PlayFab?
-<a href="https://playfab.com">PlayFab</a> is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
+<a target="_blank" href="https://playfab.com">PlayFab</a> is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
 
 If you're making a Twine game, most of this isn't relevant to you! However, it does include a very good analytics service. Because it's meant for games, it's a better fit fo Twine games than many other non-game analytics tools.
 
