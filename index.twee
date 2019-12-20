@@ -6,6 +6,19 @@
     "start": "Start"
 }
 
+::StoryCSS
+a {
+    color: #4169E1;
+}
+
+a:active {
+    color: #DD4B39;
+}
+
+a:visited {
+    color: #4169E1;
+}
+
 ::StoryTitle 
 Playfab-Twine
  
@@ -23,7 +36,11 @@ $(function () {
 ::Start 
 <h1>PlayFab-Twine</h1>
 
-PlayFab-Twine is a library that makes it easy to integrate <a href="https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker">PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
+PlayFab-Twine makes it easy to integrate <a href="https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker">PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. 
+
+With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! 
+
+It specifically targets games built in Twine 2 using the Harlowe story format.
 
 [[What is Twine?]]
 
@@ -33,9 +50,9 @@ PlayFab-Twine is a library that makes it easy to integrate <a href="https://play
 
 [[How do I set it up?]]
 
-Since this site is made in Twine, it's using PlayFab-Twine! You can see a [[live example]] of the user-facing Telltale-style choice visualizations.
+Since this site is made in Twine, it's using PlayFab-Twine!
 
-If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: [https://github.com/lazerwalker/playfab-twine].
+If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: <a href="https://github.com/lazerwalker/playfab-twine">https://github.com/lazerwalker/playfab-twine</a>.
 
 
 ::What is Twine?
@@ -89,7 +106,7 @@ In the Twine editor, edit your game's JavaScript code by opening the menu and se
 
 4. Paste in the following code, adding in the appropriate Title ID and variable names.
 
-<code>
+<pre>
 var url = "https://lazerwalker.com/playfab-twine/index.js";
 
 // Your PlayFab Title ID, found in Step 2
@@ -104,7 +121,7 @@ $(function() {
     setupPlayfab(playfabID, trackedVariables, State);
   });
 });
-</code>
+</pre>
 
 ...and that's it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.
 
