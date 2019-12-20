@@ -140,7 +140,12 @@ This is not yet currently public, but I'm actively working on an API to access g
 
 ## Privacy
 
-TODO: This section will talk, in human-readable terms, how PlayFab stores your data. For now, it's worth noting that this library doesn't store your data in any way, and does not access your PlayFab account in any way other than to upload data to it.
+The basic concept of gathering user analytics can sometimes feel icky. A few specific points about PlayFab-Twine and privacy:
+
+- This tool doesn't actually store or do anything with your data. It just writes it to your personal PlayFab account, and does not access your PlayFab account in any other way.
+- By default, PlayFab doesn't gather any personally identifiable information (PII). Unless you're doing something pretty weird with your game, neither PlayFab nor you will be able to link an anonymous player account to a real human being based purely on their behavioral data. By default, it doesn't even store IP addresses.
+- PlayFab will not sell or reuse your private user data (at least at the time of this writing, I am not a lawyer, etc). See PlayFab's [Terms of Service](https://playfab.com/terms/) for more information.
+- As long as you're on a free PlayFab tier, data is only retained for 7 days.
 
 ## License
 
