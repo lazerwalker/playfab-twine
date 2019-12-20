@@ -27,6 +27,16 @@ a:hover {
 
 a:visited {
     color: #4169E1;
+}
+
+textarea {
+    background-color: black;
+    color: white;
+    font-family: Monaco, Courier New;
+    padding: 10px;
+    width: 90%;
+    min-height: 340px;
+    font-size: 16px;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">var url = "https://lazerwalker.com/playfab-twine/index.js";
 $(function () {
     $.getScript(url,
@@ -82,9 +92,9 @@ After you have that, you&#39;re ready to [[add PlayFab to your Twine game|integr
 
 &lt;img src=&quot;images/twine-js-menu.png&quot;/&gt;
 
-4. Paste in the following code, adding in the appropriate Title ID and variable names.
+Paste in the following code, adding in the appropriate Title ID and variable names.
 
-&lt;pre&gt;
+&lt;textarea&gt;
 var url = &quot;https://lazerwalker.com/playfab-twine/index.js&quot;;
 
 // Your PlayFab Title ID, found in Step 2
@@ -99,7 +109,7 @@ $(function() {
     setupPlayfab(playfabID, trackedVariables, State);
   });
 });
-&lt;/pre&gt;
+&lt;/textarea&gt;
 
 ...and that&#39;s it! As soon as your game is live on the web, you can log in at &lt;a target=&quot;_blank&quot; href=&quot;https://playfab.com?WT.mc_id=github-playfabtwine-emwalker&quot;&gt;https://playfab.com&lt;/a&gt; and see real-time data flowing in.</tw-passagedata><tw-passagedata pid="9" name="live example" tags="" position="1100,100" size="100,100"></tw-passagedata></tw-storydata>
 
