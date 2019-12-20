@@ -4,8 +4,6 @@
 
 PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
 
-**WARNING: This repo is under construction. Watch this space!**
-
 You can (will be able to) find an interactive version of this README, written in Twine and displaying live stats via PlayFab-Twine, at https://lazerwalker.com/playfab-twine
 
 ## What is Twine?
@@ -35,13 +33,7 @@ No identifying data is stored about your players, and their data will not be sol
 
 Getting started with PlayFab-Twine is easy!
 
-You'll need to [[sign up for a free PlayFab account and get your Title ID|Sign up for PlayFab]].
-
-If you already have that, you can jump straight to [[adding the library to your Twine game]].
-
-::Sign up for PlayFab
-
-1. Sign up for a PlayFab account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). Once you've created an account and a Studio, create a new Title (this represents a single game).
+1. If you don't have one already, sign up for a PlayFab account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). Once you've created an account and a Studio, create a new Title (this represents a single game).
 
 2. Find your PlayFab Title ID. You can find it by clicking the gear in the top-left corner, selecting "Title Settings", and going to the "API Features" tab. It should look something like "A1B2C3".
 
