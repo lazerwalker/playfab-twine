@@ -11,15 +11,7 @@
 
 <tw-story></tw-story>
 
-<!-- UUID://F2277A49-95C9-4B14-AE66-62526089F861// --><tw-storydata name="Playfab-Twine" startnode="2" creator="Tweego" creator-version="2.0.0" ifid="F2277A49-95C9-4B14-AE66-62526089F861" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript">var url = "https://lazerwalker.com/playfab-twine/index.js";
-$(function () {
-    $.getScript(url,
-        (data, textStatus, jqxhr) => {
-					const trackedVariables = []
-					setupPlayfab("A24FC", trackedVariables, State)
-        }
-    )
-})</script><tw-passagedata pid="1" name="StoryCSS" tags="" position="100,100" size="100,100">a {
+<!-- UUID://F2277A49-95C9-4B14-AE66-62526089F861// --><tw-storydata name="Playfab-Twine" startnode="1" creator="Tweego" creator-version="2.0.0" ifid="F2277A49-95C9-4B14-AE66-62526089F861" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">a {
     color: #4169E1;
 }
 
@@ -29,7 +21,15 @@ a:active {
 
 a:visited {
     color: #4169E1;
-}</tw-passagedata><tw-passagedata pid="2" name="Start" tags="" position="225,100" size="100,100">&lt;h1&gt;PlayFab-Twine&lt;/h1&gt;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">var url = "https://lazerwalker.com/playfab-twine/index.js";
+$(function () {
+    $.getScript(url,
+        (data, textStatus, jqxhr) => {
+					const trackedVariables = []
+					setupPlayfab("A24FC", trackedVariables, State)
+        }
+    )
+})</script><tw-passagedata pid="1" name="Start" tags="" position="100,100" size="100,100">&lt;h1&gt;PlayFab-Twine&lt;/h1&gt;
 
 PlayFab-Twine makes it easy to integrate &lt;a href=&quot;https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker&quot;&gt;PlayFab&lt;/a&gt; analytics into your &lt;a href=&quot;https://twinery.org&quot;&gt;Twine&lt;/a&gt; games. 
 
@@ -47,11 +47,11 @@ It specifically targets games built in Twine 2 using the Harlowe story format.
 
 Since this site is made in Twine, it&#39;s using PlayFab-Twine!
 
-If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: &lt;a href=&quot;https://github.com/lazerwalker/playfab-twine&quot;&gt;https://github.com/lazerwalker/playfab-twine&lt;/a&gt;.</tw-passagedata><tw-passagedata pid="3" name="What is Twine?" tags="" position="350,100" size="100,100">&lt;a href=&quot;https://twinery.org&quot;&gt;Twine&lt;/a&gt; is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don&#39;t know how to program. This website was made in Twine!</tw-passagedata><tw-passagedata pid="4" name="What is PlayFab?" tags="" position="475,100" size="100,100">&lt;a href=&quot;https://playfab.com&quot;&gt;PlayFab&lt;/a&gt; is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
+If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: &lt;a href=&quot;https://github.com/lazerwalker/playfab-twine&quot;&gt;https://github.com/lazerwalker/playfab-twine&lt;/a&gt;.</tw-passagedata><tw-passagedata pid="2" name="What is Twine?" tags="" position="225,100" size="100,100">&lt;a href=&quot;https://twinery.org&quot;&gt;Twine&lt;/a&gt; is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don&#39;t know how to program. This website was made in Twine!</tw-passagedata><tw-passagedata pid="3" name="What is PlayFab?" tags="" position="350,100" size="100,100">&lt;a href=&quot;https://playfab.com&quot;&gt;PlayFab&lt;/a&gt; is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
 
 If you&#39;re making a Twine game, most of this isn&#39;t relevant to you! However, it does include a very good analytics service. Because it&#39;s meant for games, it&#39;s a better fit fo Twine games than many other non-game analytics tools.
 
-Its free tier is also very generous. If you&#39;re just using it to add analytics to your Twine game, it won&#39;t cost you anything!</tw-passagedata><tw-passagedata pid="5" name="What is PlayFab-Twine?" tags="" position="600,100" size="100,100">
+Its free tier is also very generous. If you&#39;re just using it to add analytics to your Twine game, it won&#39;t cost you anything!</tw-passagedata><tw-passagedata pid="4" name="What is PlayFab-Twine?" tags="" position="475,100" size="100,100">
 PlayFab-Twine is a piece of software that makes it easy for you to add analytics to your Twine game without writing any custom code!
 
 With only a few lines of copy/pasted code, and a tiny bit of configuration, it will automatically gather user behavior for you to look at later. It will:
@@ -59,21 +59,21 @@ With only a few lines of copy/pasted code, and a tiny bit of configuration, it w
 - Track which passages players visit, and in what order
 - Track any number of Twine variables
 
-No identifying data is stored about your players, and their data will not be sold or used in any way.</tw-passagedata><tw-passagedata pid="6" name="How do I set it up?" tags="" position="725,100" size="100,100">
+No identifying data is stored about your players, and their data will not be sold or used in any way.</tw-passagedata><tw-passagedata pid="5" name="How do I set it up?" tags="" position="600,100" size="100,100">
 Getting started with PlayFab-Twine is easy!
 
 You&#39;ll need to [[sign up for a free PlayFab account|Sign up for PlayFab]] and [[get your Title ID|Get your Title ID]].
 
-If you already know the Title ID you&#39;d like to use, you can jump straight to [[adding the library to your Twine game|integration]].</tw-passagedata><tw-passagedata pid="7" name="Sign up for PlayFab" tags="" position="850,100" size="100,100">Sign up for a new account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). 
+If you already know the Title ID you&#39;d like to use, you can jump straight to [[adding the library to your Twine game|integration]].</tw-passagedata><tw-passagedata pid="6" name="Sign up for PlayFab" tags="" position="725,100" size="100,100">Sign up for a new account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). 
 
 Once you&#39;ve created an account and a Studio, create a new Title (this represents a single game). 
 
-Next, you&#39;ll need to [[find that Title&#39;s Title ID|Get your Title ID]]</tw-passagedata><tw-passagedata pid="8" name="Get your Title ID" tags="" position="975,100" size="100,100">You can find your project&#39;s Title ID by clicking the gear in the top-left corner, selecting &quot;Title Settings&quot;, and going to the &quot;API Features&quot; tab. It should look something like &quot;A1B2C3&quot;.
+Next, you&#39;ll need to [[find that Title&#39;s Title ID|Get your Title ID]]</tw-passagedata><tw-passagedata pid="7" name="Get your Title ID" tags="" position="850,100" size="100,100">You can find your project&#39;s Title ID by clicking the gear in the top-left corner, selecting &quot;Title Settings&quot;, and going to the &quot;API Features&quot; tab. It should look something like &quot;A1B2C3&quot;.
 
 &lt;img src=&quot;images/title-settings.png&quot;&gt;
 &lt;img src=&quot;images/title-id.png&quot;&gt;
 
-After you have that, you&#39;re ready to [[add PlayFab to your Twine game|integration]].</tw-passagedata><tw-passagedata pid="9" name="integration" tags="" position="1100,100" size="100,100">In the Twine editor, edit your game&#39;s JavaScript code by opening the menu and selecting &quot;Edit Story JavaScript&quot;.
+After you have that, you&#39;re ready to [[add PlayFab to your Twine game|integration]].</tw-passagedata><tw-passagedata pid="8" name="integration" tags="" position="975,100" size="100,100">In the Twine editor, edit your game&#39;s JavaScript code by opening the menu and selecting &quot;Edit Story JavaScript&quot;.
 
 &lt;img src=&quot;images/twine-js-menu.png&quot;/&gt;
 
@@ -96,7 +96,7 @@ $(function() {
 });
 &lt;/pre&gt;
 
-...and that&#39;s it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.</tw-passagedata><tw-passagedata pid="10" name="live example" tags="" position="1225,100" size="100,100"></tw-passagedata></tw-storydata>
+...and that&#39;s it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.</tw-passagedata><tw-passagedata pid="9" name="live example" tags="" position="1100,100" size="100,100"></tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
