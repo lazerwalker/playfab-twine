@@ -9,6 +9,8 @@
 ::StoryCSS [stylesheet]
 a {
     color: #4169E1;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 a:active {
