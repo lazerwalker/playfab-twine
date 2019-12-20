@@ -6,7 +6,7 @@
     "start": "Start"
 }
 
-::StoryCSS
+::StoryCSS [stylesheet]
 a {
     color: #4169E1;
 }
