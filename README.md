@@ -26,7 +26,7 @@ PlayFab-Twine is a piece of software that makes it easy for you to add analytics
 
 With only a few lines of copy/pasted code, and a tiny bit of configuration, it will automatically gather user behavior for you to look at later. It will:
 
-- Track which nodes players visit, and in what order
+- Track which passages players visit, and in what order
 - Track any number of Twine variables
 - Give you the ability to easily show players choice graphs:
 
@@ -80,7 +80,7 @@ PlayFab-Twine hooks into Twine's runtime and sends off analytics events when the
 
 PlayFab-Twine exposes data in a few different ways:
 
-### Tracking Link Clicks / Visited Nodes
+### Tracking Link Clicks / Visited Passages
 
 Every time a player clicks a link, two events are tracked. One is called `link_clicked`, and one is called `link_clicked_{link text}`, where the `link text` is the full printed text that was displayed in the link, but with spaces replaced by underscores. Both have a JSON payload for their body:
 
@@ -93,7 +93,7 @@ Every time a player clicks a link, two events are tracked. One is called `link_c
 
 The `state` object contains the current values for every variable key given in the `trackedVariables` argument passed into PlayFab-Twine when you initialize it.
 
-Additionally, every time Harlowe loads a new node, an event is fired with the name `node_loaded`, with a payload similar to the previous events. The "text" property contains the internal name of the node, rather than the displayed text on the clicked link.
+Additionally, every time Harlowe loads a new passage, an event is fired with the name `passage_loaded`, with a payload similar to the previous events. The "text" property contains the internal name of the passage, rather than the displayed text on the clicked link.
 
 **WARNING**: This duplication isn't great! Cleaning this up will hopefully happen before this library is publicized.
 

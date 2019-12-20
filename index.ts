@@ -73,19 +73,19 @@ window.setupPlayfab = (
     // Warning: Harlowe has no official public API, so this might break in a future release.
     State.on("forward", e => {
       PlayFabClient.WritePlayerEvent({
-        EventName: "node_loaded",
-        Body: { Node: e, State: trackedValues(trackedVariables) },
+        EventName: "passage_loaded",
+        Body: { Passage: e, State: trackedValues(trackedVariables) },
         Timestamp: new Date()
       });
 
-      // For data accessed via the API, it's good to have clean "node_loaded" events that contain everything as metadata
+      // For data accessed via the API, it's good to have clean "passage_loaded" events that contain everything as metadata
       // However, within PlayFab's analytics dashboard, we can't easily visualize the same event with different parameters.
       //
-      // This sends a second set of node_lodaed events with unique names (e.g. "node_loaded_my_node_name").
+      // This sends a second set of passage_loaded events with unique names (e.g. "passage_loaded_my_passage_name").
       // It's messy and clutters our event stream, but is still useful.
       PlayFabClient.WritePlayerEvent({
-        EventName: "node_loaded_" + e.replace(/\W/gi, "_"),
-        Body: { Node: e, State: trackedValues(trackedVariables) },
+        EventName: "passage_loaded_" + e.replace(/\W/gi, "_"),
+        Body: { Passage: e, State: trackedValues(trackedVariables) },
         Timestamp: new Date()
       });
       console.log("History event!", e);
@@ -94,10 +94,10 @@ window.setupPlayfab = (
     // Because we're using this in context of Twine 2 + Harlowe,
     // we can assume jQuery will already exist in the execution environment
     $(document).on("click", "tw-link", e => {
-      // Sometimes, it's helpful to track "a link was clicked" as distinct from "a new node was loaded"
+      // Sometimes, it's helpful to track "a link was clicked" as distinct from "a new passage was loaded"
       // This tracks events whenever the player clicks a Twine link.
-      // This might be e.g. a cycling link or a reveal link rather than something that triggers a node transition.
-      // The "Text" tracked is the displayed text, not the node name — use the node_loaded events if that's what you want.
+      // This might be e.g. a cycling link or a reveal link rather than something that triggers a passage transition.
+      // The "Text" tracked is the displayed text, not the passage name — use the passage_loaded events if that's what you want.
 
       console.log("Tracking link click event: '" + e.target.innerText + "'");
       PlayFabClient.WritePlayerEvent({
@@ -120,10 +120,13 @@ window.setupPlayfab = (
     });
 
     window.addEventListener("beforeunload", function(e) {
-      console.log("Tracking browser close with node " + State.passage);
+      console.log("Tracking browser close with passage " + State.passage);
       PlayFabClient.WritePlayerEvent({
         EventName: "game_closed",
-        Body: { Node: State.passage, State: trackedValues(trackedVariables) },
+        Body: {
+          Passage: State.passage,
+          State: trackedValues(trackedVariables)
+        },
         Timestamp: new Date()
       });
     });

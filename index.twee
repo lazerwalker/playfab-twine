@@ -52,7 +52,7 @@ PlayFab-Twine is a piece of software that makes it easy for you to add analytics
 
 With only a few lines of copy/pasted code, and a tiny bit of configuration, it will automatically gather user behavior for you to look at later. It will:
 
-* Track which nodes players visit, and in what order
+* Track which passages players visit, and in what order
 * Track any number of Twine variables
 * Give you the ability to easily show players choice graphs:
 
