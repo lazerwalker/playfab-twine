@@ -69,6 +69,8 @@ window.setupPlayfab = (
   );
 
   const setUpStateHandlers = (trackedVariables: string[]) => {
+    // Tie into Harlowe's internal state tracking to log an analytics event whenever the current passage changes
+    // Warning: Harlowe has no official public API, so this might break in a future release.
     State.on("forward", e => {
       PlayFabClient.WritePlayerEvent({
         EventName: "node_loaded",
@@ -76,6 +78,11 @@ window.setupPlayfab = (
         Timestamp: new Date()
       });
 
+      // For data accessed via the API, it's good to have clean "node_loaded" events that contain everything as metadata
+      // However, within PlayFab's analytics dashboard, we can't easily visualize the same event with different parameters.
+      //
+      // This sends a second set of node_lodaed events with unique names (e.g. "node_loaded_my_node_name").
+      // It's messy and clutters our event stream, but is still useful.
       PlayFabClient.WritePlayerEvent({
         EventName: "node_loaded_" + e.replace(/\W/gi, "_"),
         Body: { Node: e, State: trackedValues(trackedVariables) },
@@ -87,6 +94,11 @@ window.setupPlayfab = (
     // Because we're using this in context of Twine 2 + Harlowe,
     // we can assume jQuery will already exist in the execution environment
     $(document).on("click", "tw-link", e => {
+      // Sometimes, it's helpful to track "a link was clicked" as distinct from "a new node was loaded"
+      // This tracks events whenever the player clicks a Twine link.
+      // This might be e.g. a cycling link or a reveal link rather than something that triggers a node transition.
+      // The "Text" tracked is the displayed text, not the node name — use the node_loaded events if that's what you want.
+
       console.log("Tracking link click event: '" + e.target.innerText + "'");
       PlayFabClient.WritePlayerEvent({
         EventName: "link_clicked",
