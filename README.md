@@ -124,9 +124,13 @@ Specifically, if you want to pull up specific events, you want to use the `Event
 
 As an example, this query will show every time a player either clicked a link titled "Go inside", or loaded a passage called "front porch":
 
-`EventData.EventName == 'link_clicked_Go_inside' or EventData.EventName == 'link_clicked_front_porch'`
+`EventData.EventName == 'link_clicked_Go_inside' or EventData.EventName == 'passage_loaded_front_porch'`
 
 Note that these titles are case-sensitive.
+
+This will let you view a graph comparing relative popularities of those events over time:
+
+![example graph](images/graph.png)
 
 (Nerdy explanation: Why do we need to use the ugly long event names instead of the more concise ones? The PlayFab analytics dashboard currently doesn't allow you to easily run reports that segregate data with the same event name based on custom event properties. In other words, you can say "give me every `passage_loaded` query where the passage name is one of these five passages", but the graph you see will group them all together instead of letting you break out data by passage.)
 
