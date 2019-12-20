@@ -23,7 +23,7 @@ $(function () {
 ::Start 
 <h1>PlayFab-Twine</h1>
 
-PlayFab-Twine is a library that makes it easy to integrate <a href="https://https://playfab.com">Azure PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience!
+PlayFab-Twine is a library that makes it easy to integrate <a href="https://playfab.com?WT.mc_id=landingpage-playfabtwine-emwalker">PlayFab</a> analytics into your <a href="https://twinery.org">Twine</a> games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
 
 [[What is Twine?]]
 
@@ -31,10 +31,12 @@ PlayFab-Twine is a library that makes it easy to integrate <a href="https://http
 
 [[What is PlayFab-Twine?]]
 
-
 [[How do I set it up?]]
 
 Since this site is made in Twine, it's using PlayFab-Twine! You can see a [[live example]] of the user-facing Telltale-style choice visualizations.
+
+If you want to read about how to access analytics, or about how this project respects user privacy, check out the full project README on GitHub: [https://github.com/lazerwalker/playfab-twine].
+
 
 ::What is Twine?
 <a href="https://twinery.org">Twine</a> is a tool for making hypertext-based interactive fiction — text-based narrative games you play in a web browser by reading text and clicking on links! Twine has a user-friendly visual editor that makes it easy to make games even if you don't know how to program. This website was made in Twine!
@@ -42,9 +44,9 @@ Since this site is made in Twine, it's using PlayFab-Twine! You can see a [[live
 ::What is PlayFab?
 <a href="https://playfab.com">PlayFab</a> is a hosted backend platform for game LiveOps. In plain English, that means it provides all of the server bits you need to run an online game: things like friend lists and voice chat, an in-game store and inventory management, and leaderboards. 
 
-If you're making a Twine game, most of this isn't relevant to you! However, it does include a very good analytics service. Because it's meant for games, it's a better fit fo Twine games than many other non-game analytics tools. 
+If you're making a Twine game, most of this isn't relevant to you! However, it does include a very good analytics service. Because it's meant for games, it's a better fit fo Twine games than many other non-game analytics tools.
 
-Its free tier is also very generous. If you're just using it to add analytics to your Twine game, it won't cost you anything.
+Its free tier is also very generous. If you're just using it to add analytics to your Twine game, it won't cost you anything!
 
 ::What is PlayFab-Twine?
 
@@ -52,9 +54,8 @@ PlayFab-Twine is a piece of software that makes it easy for you to add analytics
 
 With only a few lines of copy/pasted code, and a tiny bit of configuration, it will automatically gather user behavior for you to look at later. It will:
 
-* Track which passages players visit, and in what order
-* Track any number of Twine variables
-* Give you the ability to easily show players choice graphs:
+- Track which passages players visit, and in what order
+- Track any number of Twine variables
 
 No identifying data is stored about your players, and their data will not be sold or used in any way.
 
@@ -62,39 +63,49 @@ No identifying data is stored about your players, and their data will not be sol
 
 Getting started with PlayFab-Twine is easy!
 
-You'll need to [[sign up for a free PlayFab account and get your Title ID|Sign up for PlayFab]].
+You'll need to [[sign up for a free PlayFab account|Sign up for PlayFab]] and [[get your Title ID|Get your Title ID]].
 
-If you already have that, you can jump straight to [[adding the library to your Twine game]].
+If you already know the Title ID you'd like to use, you can jump straight to [[adding the library to your Twine game|integration]].
 
 ::Sign up for PlayFab
-1. Sign up for a PlayFab account.
+Sign up for a new account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). 
 
-2. Find your PlayFab Title ID.
+Once you've created an account and a Studio, create a new Title (this represents a single game). 
 
-3. In the Twine editor, edit your game's JavaScript.
+Next, you'll need to [[find that Title's Title ID|Get your Title ID]]
 
-4. Paste in the following code:
-```
+:: Get your Title ID
+You can find your project's Title ID by clicking the gear in the top-left corner, selecting "Title Settings", and going to the "API Features" tab. It should look something like "A1B2C3".
+
+<img src="images/title-settings.png">
+<img src="images/title-id.png">
+
+After you have that, you're ready to [[add PlayFab to your Twine game|integration]].
+
+::integration
+In the Twine editor, edit your game's JavaScript code by opening the menu and selecting "Edit Story JavaScript".
+
+<img src="images/twine-js-menu.png"/>
+
+4. Paste in the following code, adding in the appropriate Title ID and variable names.
+
+<code>
 var url = "https://lazerwalker.com/playfab-twine/index.js";
 
 // Your PlayFab Title ID, found in Step 2
-var playfabID = "A1B2C3"
+var playfabID = "A1B2C3";
 
 // An array of every Twine variable you want to track (don't include the dollar sign)
-var trackedVariables = ["score", "hunger", "hasPetDog"]
+var trackedVariables = ["score", "hunger", "hasPetDog"];
 
-$(function () {
-    $.getScript(url,
-        (data, textStatus, jqxhr) => {
-            const trackedVariables = []
-            setupPlayfab(playfabID, trackedVariables, State)
-        }
-    )
-})
-```
+$(function() {
+  $.getScript(url, function(data, textStatus, jqxhr) {
+    const trackedVariables = [];
+    setupPlayfab(playfabID, trackedVariables, State);
+  });
+});
+</code>
 
-...and that's it! As soon as your game is live on the web, you can log in at https://playfab.com and see real-time data flowing in.
-
-TODO: Displaying choice data
+...and that's it! As soon as your game is live on the web, you can log in at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) and see real-time data flowing in.
 
 ::live example

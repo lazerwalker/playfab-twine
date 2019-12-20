@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "parcel build index.ts",
-    "build-site": "tweego index.twee -o dist/index.html",
+    "build-site": "tweego index.twee -o dist/index.html; cp -r images/ dist",
     "deploy": "gh-pages -d dist"
   }
 }
