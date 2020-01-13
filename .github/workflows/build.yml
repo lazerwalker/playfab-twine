@@ -30,7 +30,7 @@ jobs:
 
       - name: build website
         run: |
-          go get bitbucket.org/tmedwards/tweego
+          go get https://github.com/tmedwards/tweego
           export PATH=$PATH:$(go env GOPATH)/bin
           npm run build-site
 
