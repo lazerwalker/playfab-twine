@@ -100,7 +100,7 @@ You'll need to [[sign up for a free PlayFab account|Sign up for PlayFab]] and [[
 If you already know the Title ID you'd like to use, you can jump straight to [[adding the library to your Twine game|integration]].
 
 ::Sign up for PlayFab
-Sign up for a new account at [https://playfab.com](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker). 
+Sign up for a new account at <a href="https://playfab.com?WT.mc_id=github-playfabtwine-emwalker">https://playfab.com</a>.
 
 Once you've created an account and a Studio, create a new Title (this represents a single game). 
 
