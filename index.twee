@@ -58,7 +58,9 @@ With only a few lines of copy/pasted code, you can get free real-time analytics 
 
 It specifically targets games built in Twine 2 using the Harlowe story format.
 
-Some questions you might have:
+If you're unsure about how analytics can help your narrative game, or want to know how to best use them as a design tool, I've written a <a href="https://dev.to/lazerwalker/using-data-to-improve-your-narrative-games-4g7o">blog post</a> that might be helpful.
+
+Some other questions you might have:
 [[What is Twine?|]]
 [[What is PlayFab?]]
 [[What is PlayFab-Twine?]]
