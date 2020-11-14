@@ -109,7 +109,7 @@ Additionally, the "PlayStream Monitor" tab will show you a real-time feed of you
 
 If you click the "Data" link in the "Analyze" subsection of the PlayFab dashboard, you can reach the Analytics dashboard, where you can run custom queries.
 
-The [PlayFab documentation](https://docs.microsoft.com/en-ca/gaming/playfab/features/analytics/metrics/real-time-analytics-event-queries?WT.mc_id=github-playfabtwine-emwalker) has a great overview of the query language you can use to write your own custom queries.
+The [PlayFab documentation](https://docs.microsoft.com/gaming/playfab/features/analytics/metrics/real-time-analytics-event-queries?WT.mc_id=iot-0000-emwalker) has a great overview of the query language you can use to write your own custom queries.
 
 Specifically, if you want to pull up specific events, you want to use the `EventData.EventName` field, and use the event names that include the passage or link text in them (see the technical note above).
 
