@@ -2,7 +2,7 @@
 
 ![](https://github.com/lazerwalker/playfab-twine/workflows/Build/badge.svg)
 
-PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
+PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=spatial-0000-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
 
 You can (will be able to) find an interactive version of this README, written in Twine and displaying live stats via PlayFab-Twine, at https://lazerwalker.com/playfab-twine
 
