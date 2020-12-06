@@ -2,7 +2,7 @@
 
 ![](https://github.com/lazerwalker/playfab-twine/workflows/Build/badge.svg)
 
-PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=github-playfabtwine-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
+PlayFab-Twine is a library that makes it easy to integrate [PlayFab](https://playfab.com?WT.mc_id=spatial-0000-emwalker) analytics into your [Twine](https://twinery.org) games. With only a few lines of copy/pasted code, you can get free real-time analytics about how players are interacting with your game or experience! It specifically targets games built in Twine 2 using the Harlowe story format.
 
 You can (will be able to) find an interactive version of this README, written in Twine and displaying live stats via PlayFab-Twine, at https://lazerwalker.com/playfab-twine
 
@@ -109,7 +109,7 @@ Additionally, the "PlayStream Monitor" tab will show you a real-time feed of you
 
 If you click the "Data" link in the "Analyze" subsection of the PlayFab dashboard, you can reach the Analytics dashboard, where you can run custom queries.
 
-The [PlayFab documentation](https://docs.microsoft.com/en-ca/gaming/playfab/features/analytics/metrics/real-time-analytics-event-queries?WT.mc_id=github-playfabtwine-emwalker) has a great overview of the query language you can use to write your own custom queries.
+The [PlayFab documentation](https://docs.microsoft.com/gaming/playfab/features/analytics/metrics/real-time-analytics-event-queries?WT.mc_id=spatial-0000-emwalker) has a great overview of the query language you can use to write your own custom queries.
 
 Specifically, if you want to pull up specific events, you want to use the `EventData.EventName` field, and use the event names that include the passage or link text in them (see the technical note above).
 
